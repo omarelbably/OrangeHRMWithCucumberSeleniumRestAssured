@@ -1,5 +1,6 @@
 package hooks;
 import Ellithium.core.driver.DriverFactory;
+import Ellithium.core.driver.HeadlessMode;
 import Ellithium.core.driver.LocalDriverType;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
@@ -17,7 +18,7 @@ public class Hooks {
     public static AddEmployeePage addEmployeePage;
     @Before("@E2E")
     public void setupDriver() {
-        DriverFactory.getNewLocalDriver(LocalDriverType.Chrome);
+        DriverFactory.getNewLocalDriver(LocalDriverType.Chrome, HeadlessMode.True);
         loginPage = new LoginPage(DriverFactory.getCurrentDriver());
         homePage = new HomePage(DriverFactory.getCurrentDriver());
         adminPage = new AdminPage(DriverFactory.getCurrentDriver());
